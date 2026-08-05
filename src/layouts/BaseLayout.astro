@@ -1,0 +1,185 @@
+---
+import { url } from '../utils/url';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Personal site of Daniel Etrata' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href={url('/favicon.svg')} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href={url('/')} class="site-name">Daniel Etrata</a>
+        <div class="nav-links">
+          <a href={url('/')}>Resume</a>
+          <a href={url('/projects/')}>Projects</a>
+          <a href={url('/blog/')}>Blog</a>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer>
+      <p>&copy; {new Date().getFullYear()} Daniel Etrata</p>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  /* Design tokens ported from the "hired" WordPress theme (ModernThemes) */
+  :root {
+    --text: #404040;
+    --text-muted: #999;
+    --accent: #25b5f1;
+    --accent-hover: #07a2e2;
+    --border: #eaeaea;
+    --bg: #ffffff;
+    --bg-subtle: #f1f1f1;
+    --dark: #1f2023;
+    --heading-font: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --body-font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --text: #dadada;
+      --text-muted: #999;
+      --border: #333;
+      --bg: #1f2023;
+      --bg-subtle: #26272b;
+    }
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+  }
+
+  body {
+    font-family: var(--body-font);
+    font-weight: 300;
+    font-size: 16px;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--heading-font);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 1.15;
+  }
+
+  header nav {
+    max-width: 46rem;
+    margin: 0 auto;
+    padding: 1.25rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+  }
+
+  .site-name {
+    font-family: var(--heading-font);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    font-size: 1.1rem;
+    text-decoration: none;
+    color: var(--text);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .nav-links a {
+    font-family: var(--heading-font);
+    font-weight: 500;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+  }
+
+  .nav-links a:hover {
+    color: var(--accent);
+  }
+
+  main {
+    max-width: 46rem;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1rem 1rem 3rem;
+    flex: 1;
+  }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 1.25rem 1rem;
+    text-align: center;
+  }
+
+  footer p {
+    font-size: 11px;
+    font-weight: 500;
+    color: #b3b3b3;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  a {
+    color: var(--accent);
+    transition: color 0.2s ease-in-out;
+  }
+
+  a:hover {
+    color: var(--accent-hover);
+  }
+
+  .button,
+  button {
+    border: 1px solid var(--accent);
+    border-radius: 3px;
+    background: var(--accent);
+    color: #fff;
+    font-family: var(--heading-font);
+    font-weight: 500;
+    padding: 0.5rem 1.25rem;
+    cursor: pointer;
+    transition: ease-in-out 0.2s;
+  }
+
+  .button:hover,
+  button:hover {
+    border-color: var(--accent-hover);
+    background: var(--accent-hover);
+    color: #fff;
+  }
+</style>

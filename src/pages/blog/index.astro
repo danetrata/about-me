@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { url } from '../../utils/url';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<BaseLayout title="Blog — Daniel Etrata">
+  <h1>Blog</h1>
+  <ul class="post-list">
+    {posts.map((post) => (
+      <li>
+        <a href={url(`/blog/${post.id}/`)}>{post.data.title}</a>
+        <time datetime={post.data.pubDate.toISOString()}>
+          {post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+        </time>
+        {post.data.description && <p>{post.data.description}</p>}
+      </li>
+    ))}
+  </ul>
+</BaseLayout>
+
+<style>
+  h1 {
+    margin-bottom: 1.5rem;
+  }
+
+  .post-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .post-list li {
+    margin-bottom: 1.5rem;
+  }
+
+  .post-list a {
+    font-size: 1.15rem;
+    font-weight: 600;
+  }
+
+  time {
+    display: block;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+  }
+
+  .post-list p {
+    color: var(--text-muted);
+    margin-top: 0.25rem;
+  }
+</style>

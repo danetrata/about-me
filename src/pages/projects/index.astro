@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+const projects = (await getCollection('projects')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+
+const rendered = await Promise.all(
+  projects.map(async (project) => ({ project, Content: (await render(project)).Content }))
+);
+---
+
+<BaseLayout title="Projects — Daniel Etrata">
+  <h1>Projects</h1>
+  <div class="grid">
+    {rendered.map(({ project, Content }) => (
+      <article id={project.id} class="card">
+        <h2>{project.data.title}</h2>
+        <p class="description">{project.data.description}</p>
+        {project.data.tech.length > 0 && (
+          <ul class="tech">
+            {project.data.tech.map((t) => <li>{t}</li>)}
+          </ul>
+        )}
+        <div class="body">
+          <Content />
+        </div>
+        <p class="links">
+          {project.data.repoUrl && <a href={project.data.repoUrl}>Source</a>}
+          {project.data.liveUrl && <a href={project.data.liveUrl}>Live</a>}
+        </p>
+      </article>
+    ))}
+  </div>
+</BaseLayout>
+
+<style>
+  h1 {
+    margin-bottom: 1.5rem;
+  }
+
+  .grid {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem;
+    background: var(--bg-subtle);
+  }
+
+  .description {
+    color: var(--text-muted);
+    margin-top: 0.25rem;
+  }
+
+  .tech {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.75rem;
+  }
+
+  .tech li {
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 0.1rem 0.6rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .body {
+    margin-top: 0.75rem;
+  }
+
+  .links {
+    margin-top: 0.75rem;
+    display: flex;
+    gap: 1rem;
+  }
+</style>

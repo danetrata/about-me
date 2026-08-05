@@ -1,0 +1,297 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { url } from '../utils/url';
+
+const projects = (await getCollection('projects', ({ data }) => data.featured))
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 3);
+
+const skills = [
+  { label: 'Cloud & Infrastructure', items: 'Kubernetes (AWS EKS, GCP, Azure, IBM, bare metal), Helm, Docker, AWS GovCloud (IL2–IL5), Nginx, Linux (Ubuntu, CentOS, Alpine)' },
+  { label: 'CI/CD & Supply-Chain Security', items: 'GitLab CI/CD, ArgoCD, Gitea, container hardening (distroless, nonroot), CVE remediation, Certificate to Field' },
+  { label: 'Observability', items: 'Prometheus, Grafana, Loki, Promtail, Elasticsearch, Kibana' },
+  { label: 'AI & ML Platform', items: 'KServe, Knative, MLflow, JupyterHub, self-hosted LLM deployment, agentic AI security' },
+  { label: 'Languages', items: 'Python, Go, JavaScript/TypeScript, SQL, Bash' },
+  { label: 'Frontend', items: 'ReactJS, HTML/CSS' },
+  { label: 'Databases', items: 'PostgreSQL, Elasticsearch' },
+  { label: 'Identity & APIs', items: 'Keycloak, OAuth 2.0, REST API design' },
+  { label: 'Testing', items: 'pytest/unittest, Selenium E2E' },
+  { label: 'Version Control & Workflow', items: 'GitLab, GitHub, Jira, Agile/Scrum' },
+];
+
+const experience = [
+  {
+    title: 'Senior Software Engineer',
+    company: 'Ulap.co',
+    dates: '2020 – 2026',
+    location: 'Remote',
+    stack: 'Python, Go, ReactJS, PostgreSQL, Elasticsearch, Kibana, Prometheus, Loki, Promtail, Grafana, KServe, Knative, ArgoCD, MLflow, Gitea, Keycloak, JupyterHub, Helm, Kubernetes (AWS, GCP, Azure, IBM, bare metal)',
+    bullets: [
+      'Served as de facto maintainer of the deployment repo for an IL5 AI/ML platform on AWS GovCloud EKS, gatekeeping merges — 600+ authored commits and 330+ merged MRs on that repo alone.',
+      'Developed a commercial multi-cloud Kubernetes management SaaS hosted on GCP across 4 environments — 1,000+ authored commits spanning Python APIs, async job infrastructure, and React UI.',
+      'Rebuilt a production vector database image from 113 CVEs to zero in one release cycle, including a verified irreversible data migration to a distroless, nonroot, major-version-bumped base.',
+      'Maintained 140 images and their repos in GitLab CI/CD with monthly scans, remediations, and justifications.',
+      'Built scan orchestration, approval automation, and rootless builds for a DoD continuous container-authorization pipeline.',
+      'Authored security mitigations for an agentic multi-model orchestration product ahead of government deployment.',
+      'Refactored an LLM-powered security assistant from OpenAI to Claude to fully self-hosted with zero external APIs, then hardened it for deployment.',
+      'Shepherded 3 applications through Certificate to Field, operating in IL5/IL4/IL2 AWS GovCloud environments.',
+      'Developed and maintained 7 products across SaaS and DoD platforms — 4,400+ authored commits and 1,000+ merged MRs across 150 repos over 6 years.',
+      'Wrote Selenium E2E test automation and drove Python API test coverage to 80%.',
+      "Authored the team's internal documentation covering container hardening, git workflows, and pipeline references, contributing 3x more than any other author.",
+    ],
+  },
+  {
+    title: 'Python & JS Software Developer',
+    company: 'BV-USA',
+    dates: '2019 – 2020',
+    location: 'Chicago, IL',
+    stack: 'CentOS, Nginx, MongoDB, NodeJS, ReactJS, AWS',
+    bullets: [
+      'Implemented Amazon Advertising API/OAuth 2.0 integration in Python for importing, scheduling, and adjusting campaigns across 27 accounts.',
+      'Built profit reporting, dashboards, and advertising keyword/search term reporting in NodeJS, MSSQL, and D3/DC.js across 3 departments and 20 regions.',
+      'Migrated 14 sites from various hosting providers to AWS S3 and EC2; responsible for Logistics and B2B Portal production deploys in AWS Elastic Beanstalk.',
+      'Utilized AWS SDK for application-specific services such as mailing lists and image storage.',
+    ],
+  },
+  {
+    title: 'Full Stack Python Web Developer',
+    company: 'CouponCabin',
+    dates: '2017 – 2019',
+    location: 'Chicago, IL',
+    stack: 'CentOS, Nginx, PostgreSQL, Django, jQuery',
+    bullets: [
+      'Led the platform upgrade from Python 2.7 to 3.6 and increased tested code coverage and peer review across 3 projects.',
+      'Maintained internal testing queues validating 300k+ coupons, stores, and brands per month.',
+      'Maintained B2B paid placement prospecting, sellables, inventory, scheduling, and market segment targeting.',
+      'Built reporting in Python, Django, and pandas, with additional reporting in PostgreSQL, D3.js, and AngularJS.',
+      'Maintained bad actor detection and logging; responsible for Tool and Merchant Portal production deploys.',
+    ],
+  },
+  {
+    title: 'Freelance Software Developer',
+    company: 'Upwork, Fiverr, PeoplePerHour',
+    dates: '2016 – 2020',
+    location: 'Chicago, IL',
+    stack: null,
+    bullets: [
+      'Launched self-contained Flask websites and developed web-scraping pipelines with Scrapy against custom client requirements.',
+      'Delivered marketing and statistical reports from scraped data into spreadsheets and MySQL databases, always on time.',
+    ],
+  },
+  {
+    title: 'Software Test Automation Engineer',
+    company: 'RDI Software',
+    dates: '2016 – 2017',
+    location: 'Oakbrook, IL',
+    stack: null,
+    bullets: [
+      "Tested point-of-sale systems, back-office servers, and in-store processing units for McDonald's in C#; product released to 5,000+ stores.",
+      'Developed command-line batch scripts to set up testing environments within an Agile team.',
+    ],
+  },
+  {
+    title: 'Math Researcher (Python)',
+    company: 'UIC Math Computing Laboratory',
+    dates: '2016',
+    location: 'Chicago, IL',
+    stack: null,
+    bullets: [
+      'Developed the persispy tool for studying invariants of algebraic varieties, abstracted to n dimensions.',
+      'Implemented C extensions from PHCPack for fast complex solutions, often achieving 10x speedups.',
+    ],
+  },
+];
+---
+
+<BaseLayout title="Daniel Etrata — Senior Software Engineer" description="Resume of Daniel Etrata, Senior Software Engineer">
+  <section class="intro">
+    <h1>Daniel Etrata</h1>
+    <p class="tagline">Senior Software Engineer</p>
+    <p class="summary">
+      Senior engineer with 10 years of continuous delivery across commercial
+      multi-cloud SaaS and IL5 DoD platforms. Ships Python, Go, and React
+      products and builds, hardens, and operates Kubernetes from container
+      build through Certificate to Field. CompTIA Security+ certified.
+      Currently building and securing agentic AI products for government
+      deployment.
+    </p>
+    <ul class="home-details">
+      <li>Chicago, IL</li>
+      <li><a href="mailto:contact@danetrata.com">contact@danetrata.com</a></li>
+      <li><a href="https://github.com/danetrata">github.com/danetrata</a></li>
+      <li><a href="https://linkedin.com/in/danetrata">linkedin.com/in/danetrata</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Experience</h2>
+    {experience.map((job) => (
+      <article class="entry">
+        <div class="entry-head">
+          <h3>{job.title} — {job.company}</h3>
+          <span class="dates">{job.dates}</span>
+        </div>
+        <p class="entry-meta">
+          {job.location}{job.stack && <> · <span class="stack">{job.stack}</span></>}
+        </p>
+        <ul>
+          {job.bullets.map((b) => <li>{b}</li>)}
+        </ul>
+      </article>
+    ))}
+  </section>
+
+  <section>
+    <h2>Skills</h2>
+    <dl class="skills">
+      {skills.map((s) => (
+        <>
+          <dt>{s.label}</dt>
+          <dd>{s.items}</dd>
+        </>
+      ))}
+    </dl>
+  </section>
+
+  <section>
+    <h2>Education & Certifications</h2>
+    <article class="entry">
+      <div class="entry-head">
+        <h3>B.S. Mathematics and Computer Science — University of Illinois at Chicago</h3>
+        <span class="dates">2016</span>
+      </div>
+    </article>
+    <article class="entry">
+      <div class="entry-head">
+        <h3>CompTIA Security+</h3>
+        <span class="dates">2023 – 2027</span>
+      </div>
+    </article>
+  </section>
+
+  {projects.length > 0 && (
+    <section>
+      <h2>Featured Projects</h2>
+      <ul class="featured-projects">
+        {projects.map((p) => (
+          <li>
+            <a href={url(`/projects/#${p.id}`)}>{p.data.title}</a> — {p.data.description}
+          </li>
+        ))}
+      </ul>
+      <p><a href={url('/projects/')}>All projects →</a></p>
+    </section>
+  )}
+</BaseLayout>
+
+<style>
+  section {
+    margin-bottom: 2.5rem;
+  }
+
+  /* Dark hero panel, after the hired theme's #home-content */
+  .intro {
+    background: var(--dark);
+    color: #fff;
+    margin-inline: calc(50% - 50vw);
+    margin-top: -1rem;
+    padding: 3.5rem calc(50vw - 50% + 1rem) 2.5rem;
+  }
+
+  .intro h1 {
+    font-size: 45px;
+    line-height: 52px;
+  }
+
+  .intro a {
+    color: #fff;
+  }
+
+  .intro a:hover {
+    color: var(--accent);
+  }
+
+  .tagline {
+    font-family: var(--heading-font);
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-top: 0.5rem;
+  }
+
+  .summary {
+    margin-top: 1.25rem;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .home-details {
+    list-style: none;
+    padding: 1.5rem 0 0;
+    margin-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 2rem;
+    font-size: 13px;
+  }
+
+  h2 {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.35rem;
+    margin-bottom: 1rem;
+  }
+
+  .entry {
+    margin-bottom: 1.5rem;
+  }
+
+  .entry-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .entry-head h3 {
+    font-size: 1.05rem;
+  }
+
+  .dates {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+
+  .entry-meta {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-top: 0.1rem;
+  }
+
+  .entry ul {
+    margin-top: 0.5rem;
+    padding-left: 1.25rem;
+  }
+
+  .entry li {
+    margin-bottom: 0.3rem;
+  }
+
+  .skills dt {
+    font-weight: 600;
+    margin-top: 0.75rem;
+  }
+
+  .skills dd {
+    margin-left: 0;
+    color: var(--text-muted);
+  }
+
+  .featured-projects {
+    padding-left: 1.25rem;
+  }
+</style>
