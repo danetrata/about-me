@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content';
 import { url } from '../utils/url';
 
 interface Props {
@@ -7,6 +8,9 @@ interface Props {
 }
 
 const { title, description = 'Personal site of Daniel Etrata' } = Astro.props;
+
+const hasProjects = (await getCollection('projects')).length > 0;
+const hasBlog = (await getCollection('blog')).length > 0;
 ---
 
 <!doctype html>
@@ -30,8 +34,8 @@ const { title, description = 'Personal site of Daniel Etrata' } = Astro.props;
         <a href={url('/')} class="site-name">Daniel Etrata</a>
         <div class="nav-links">
           <a href={url('/')}>Resume</a>
-          <a href={url('/projects/')}>Projects</a>
-          <a href={url('/blog/')}>Blog</a>
+          {hasProjects && <a href={url('/projects/')}>Projects</a>}
+          {hasBlog && <a href={url('/blog/')}>Blog</a>}
         </div>
       </nav>
     </header>

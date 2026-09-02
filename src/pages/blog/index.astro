@@ -8,7 +8,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
 );
 ---
 
-<BaseLayout title="Blog — Daniel Etrata">
+<BaseLayout title="Blog - Daniel Etrata">
   <h1>Blog</h1>
   <ul class="post-list">
     {posts.map((post) => (
