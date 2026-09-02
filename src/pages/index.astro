@@ -8,7 +8,7 @@ const projects = (await getCollection('projects', ({ data }) => data.featured))
   .slice(0, 3);
 
 const skills = [
-  { label: 'Cloud & Infrastructure', items: 'Kubernetes (AWS EKS, GCP, Azure, IBM, bare metal), Helm, Docker, AWS GovCloud (IL2–IL5), Nginx, Linux (Ubuntu, CentOS, Alpine)' },
+  { label: 'Cloud & Infrastructure', items: 'Kubernetes (AWS EKS, GCP, Azure, IBM, bare metal), Helm, Docker, AWS GovCloud (IL2-IL5), Nginx, Linux (Ubuntu, CentOS, Alpine)' },
   { label: 'CI/CD & Supply-Chain Security', items: 'GitLab CI/CD, ArgoCD, Gitea, container hardening (distroless, nonroot), CVE remediation, Certificate to Field' },
   { label: 'Observability', items: 'Prometheus, Grafana, Loki, Promtail, Elasticsearch, Kibana' },
   { label: 'AI & ML Platform', items: 'KServe, Knative, MLflow, JupyterHub, self-hosted LLM deployment, agentic AI security' },
@@ -24,27 +24,27 @@ const experience = [
   {
     title: 'Senior Software Engineer',
     company: 'Ulap.co',
-    dates: '2020 – 2026',
+    dates: '2020 - 2026',
     location: 'Remote',
     stack: 'Python, Go, ReactJS, PostgreSQL, Elasticsearch, Kibana, Prometheus, Loki, Promtail, Grafana, KServe, Knative, ArgoCD, MLflow, Gitea, Keycloak, JupyterHub, Helm, Kubernetes (AWS, GCP, Azure, IBM, bare metal)',
     bullets: [
-      'Served as de facto maintainer of the deployment repo for an IL5 AI/ML platform on AWS GovCloud EKS, gatekeeping merges — 600+ authored commits and 330+ merged MRs on that repo alone.',
-      'Developed a commercial multi-cloud Kubernetes management SaaS hosted on GCP across 4 environments — 1,000+ authored commits spanning Python APIs, async job infrastructure, and React UI.',
+      'Served as de facto maintainer of the deployment repo for an IL5 AI/ML platform on AWS GovCloud EKS, gatekeeping merges - 600+ authored commits and 330+ merged MRs on that repo alone.',
+      'Developed a commercial multi-cloud Kubernetes management SaaS hosted on GCP across 4 environments - 1,000+ authored commits spanning but not limited to Python APIs, async job infrastructure, and React UI.',
       'Rebuilt a production vector database image from 113 CVEs to zero in one release cycle, including a verified irreversible data migration to a distroless, nonroot, major-version-bumped base.',
       'Maintained 140 images and their repos in GitLab CI/CD with monthly scans, remediations, and justifications.',
       'Built scan orchestration, approval automation, and rootless builds for a DoD continuous container-authorization pipeline.',
       'Authored security mitigations for an agentic multi-model orchestration product ahead of government deployment.',
       'Refactored an LLM-powered security assistant from OpenAI to Claude to fully self-hosted with zero external APIs, then hardened it for deployment.',
       'Shepherded 3 applications through Certificate to Field, operating in IL5/IL4/IL2 AWS GovCloud environments.',
-      'Developed and maintained 7 products across SaaS and DoD platforms — 4,400+ authored commits and 1,000+ merged MRs across 150 repos over 6 years.',
-      'Wrote Selenium E2E test automation and drove Python API test coverage to 80%.',
+      'Developed and maintained 7 products across SaaS and DoD platforms - 4,400+ authored commits and 1,000+ merged MRs across 150 repos over 6 years.',
+      'Wrote Selenium E2E test automation to 80%, React Python API test coverage to 80%.',
       "Authored the team's internal documentation covering container hardening, git workflows, and pipeline references, contributing 3x more than any other author.",
     ],
   },
   {
     title: 'Python & JS Software Developer',
     company: 'BV-USA',
-    dates: '2019 – 2020',
+    dates: '2019 - 2020',
     location: 'Chicago, IL',
     stack: 'CentOS, Nginx, MongoDB, NodeJS, ReactJS, AWS',
     bullets: [
@@ -57,7 +57,7 @@ const experience = [
   {
     title: 'Full Stack Python Web Developer',
     company: 'CouponCabin',
-    dates: '2017 – 2019',
+    dates: '2017 - 2019',
     location: 'Chicago, IL',
     stack: 'CentOS, Nginx, PostgreSQL, Django, jQuery',
     bullets: [
@@ -71,7 +71,7 @@ const experience = [
   {
     title: 'Freelance Software Developer',
     company: 'Upwork, Fiverr, PeoplePerHour',
-    dates: '2016 – 2020',
+    dates: '2016 - 2020',
     location: 'Chicago, IL',
     stack: null,
     bullets: [
@@ -82,7 +82,7 @@ const experience = [
   {
     title: 'Software Test Automation Engineer',
     company: 'RDI Software',
-    dates: '2016 – 2017',
+    dates: '2016 - 2017',
     location: 'Oakbrook, IL',
     stack: null,
     bullets: [
@@ -104,16 +104,16 @@ const experience = [
 ];
 ---
 
-<BaseLayout title="Daniel Etrata — Senior Software Engineer" description="Resume of Daniel Etrata, Senior Software Engineer">
+<BaseLayout title="Daniel Etrata - Senior Software Engineer" description="Resume Daniel Etrata, Senior Software Engineer">
   <section class="intro">
     <h1>Daniel Etrata</h1>
     <p class="tagline">Senior Software Engineer</p>
     <p class="summary">
-      Senior engineer with 10 years of continuous delivery across commercial
-      multi-cloud SaaS and IL5 DoD platforms. Ships Python, Go, and React
-      products and builds, hardens, and operates Kubernetes from container
-      build through Certificate to Field. CompTIA Security+ certified.
-      Currently building and securing agentic AI products for government
+      I am a senior software engineer with 10 years of continuous delivery across commercial
+      multi-cloud SaaS and IL5 DoD platforms. I shipped Python, Go, and React
+      products and builds, hardened, and operated Kubernetes from container
+      build through Certificate to Field. I have a CompTIA Security+ certification.
+      I am currently building and securing agentic AI products for government
       deployment.
     </p>
     <ul class="home-details">
@@ -129,7 +129,7 @@ const experience = [
     {experience.map((job) => (
       <article class="entry">
         <div class="entry-head">
-          <h3>{job.title} — {job.company}</h3>
+          <h3>{job.title} - {job.company}</h3>
           <span class="dates">{job.dates}</span>
         </div>
         <p class="entry-meta">
@@ -158,14 +158,14 @@ const experience = [
     <h2>Education & Certifications</h2>
     <article class="entry">
       <div class="entry-head">
-        <h3>B.S. Mathematics and Computer Science — University of Illinois at Chicago</h3>
+        <h3>B.S. Mathematics and Computer Science - University of Illinois at Chicago</h3>
         <span class="dates">2016</span>
       </div>
     </article>
     <article class="entry">
       <div class="entry-head">
         <h3>CompTIA Security+</h3>
-        <span class="dates">2023 – 2027</span>
+        <span class="dates">2023 - 2027</span>
       </div>
     </article>
   </section>
@@ -176,7 +176,7 @@ const experience = [
       <ul class="featured-projects">
         {projects.map((p) => (
           <li>
-            <a href={url(`/projects/#${p.id}`)}>{p.data.title}</a> — {p.data.description}
+            <a href={url(`/projects/#${p.id}`)}>{p.data.title}</a> - {p.data.description}
           </li>
         ))}
       </ul>

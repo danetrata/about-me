@@ -1,10 +1,9 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
-// GitHub Pages project site: https://danetrata.github.io/about-me/
-// If the site moves to a custom domain (danetrata.com), set site to
-// 'https://danetrata.com', remove base, and add public/CNAME.
+// Custom domain via GitHub Pages (see public/CNAME). If the domain is ever
+// dropped, this repo falls back to https://danetrata.github.io/about-me/ and
+// needs site/base set back to match.
 export default defineConfig({
-  site: 'https://danetrata.github.io',
-  base: '/about-me',
+  site: 'https://danetrata.com',
 });
