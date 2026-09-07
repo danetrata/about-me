@@ -28,7 +28,7 @@ Requires Node 22+.
 
 Pushes to `main` trigger `.github/workflows/deploy.yml`, which builds the
 site and publishes it to GitHub Pages. The Pages source must be set to
-"GitHub Actions" in the repo settings.
+"GitHub Actions" in the repository settings.
 
 The site is served at the custom domain <https://danetrata.com/>
 (`public/CNAME` plus the domain setting in repo Settings → Pages); internal
