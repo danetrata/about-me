@@ -24,7 +24,7 @@ const experience = [
   {
     title: 'Senior Software Engineer',
     company: 'Ulap.co',
-    dates: '2020 - present',
+    dates: '2020-present',
     location: 'Remote',
     stack: 'Python, Go, React, PostgreSQL, Elasticsearch, Kibana, Prometheus, Loki, Promtail, Grafana, KServe, Knative, ArgoCD, MLflow, Gitea, Keycloak, JupyterHub, Helm, Kubernetes (AWS, GCP, Azure, IBM, bare metal)',
     bullets: [
@@ -44,7 +44,7 @@ const experience = [
   {
     title: 'Python & JS Software Developer',
     company: 'BV-USA',
-    dates: '2019 - 2020',
+    dates: '2019-2020',
     location: 'Chicago, IL',
     stack: 'CentOS, Nginx, MongoDB, Node.js, React, AWS',
     bullets: [
@@ -57,7 +57,7 @@ const experience = [
   {
     title: 'Full Stack Python Web Developer',
     company: 'CouponCabin',
-    dates: '2017 - 2019',
+    dates: '2017-2019',
     location: 'Chicago, IL',
     stack: 'CentOS, Nginx, PostgreSQL, Django, jQuery',
     bullets: [
@@ -71,7 +71,7 @@ const experience = [
   {
     title: 'Freelance Software Developer',
     company: 'Upwork, Fiverr, PeoplePerHour',
-    dates: '2016 - 2020',
+    dates: '2016-2020',
     location: 'Chicago, IL',
     stack: null,
     bullets: [
@@ -82,7 +82,7 @@ const experience = [
   {
     title: 'Software Test Automation Engineer',
     company: 'RDI Software',
-    dates: '2016 - 2017',
+    dates: '2016-2017',
     location: 'Oakbrook, IL',
     stack: null,
     bullets: [
@@ -104,7 +104,7 @@ const experience = [
 ];
 ---
 
-<BaseLayout title="Daniel Etrata - Senior Software Engineer" description="Resume of Daniel Etrata, Senior Software Engineer">
+<BaseLayout title="Daniel Etrata, Senior Software Engineer" description="Resume of Daniel Etrata, Senior Software Engineer">
   <section class="intro">
     <h1>Daniel Etrata</h1>
     <p class="tagline">Senior Software Engineer</p>
@@ -129,7 +129,7 @@ const experience = [
     {experience.map((job) => (
       <article class="entry">
         <div class="entry-head">
-          <h3>{job.title} - {job.company}</h3>
+          <h3>{job.title} at {job.company}</h3>
           <span class="dates">{job.dates}</span>
         </div>
         <p class="entry-meta">
@@ -158,14 +158,14 @@ const experience = [
     <h2>Education & Certifications</h2>
     <article class="entry">
       <div class="entry-head">
-        <h3>B.S. Mathematics and Computer Science - University of Illinois at Chicago</h3>
+        <h3>B.S. Mathematics and Computer Science, University of Illinois at Chicago</h3>
         <span class="dates">2016</span>
       </div>
     </article>
     <article class="entry">
       <div class="entry-head">
         <h3>CompTIA Security+</h3>
-        <span class="dates">2023 - 2027</span>
+        <span class="dates">2023-2027</span>
       </div>
     </article>
   </section>
@@ -176,7 +176,8 @@ const experience = [
       <ul class="featured-projects">
         {projects.map((p) => (
           <li>
-            <a href={url(`/projects/#${p.id}`)}>{p.data.title}</a> - {p.data.description}
+            <a href={url(`/projects/#${p.id}`)}>{p.data.title}</a>
+            <span class="project-desc">{p.data.description}</span>
           </li>
         ))}
       </ul>
@@ -293,5 +294,10 @@ const experience = [
 
   .featured-projects {
     padding-left: 1.25rem;
+  }
+
+  .project-desc {
+    display: block;
+    color: var(--text-muted);
   }
 </style>
