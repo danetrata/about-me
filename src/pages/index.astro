@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { url } from '../utils/url';
 
-const projects = (await getCollection('projects', ({ data }) => data.featured))
+const projects = (await getCollection('projects', ({ data }) => data.featured && !data.draft))
   .sort((a, b) => a.data.order - b.data.order)
   .slice(0, 3);
 
