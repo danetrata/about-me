@@ -9,8 +9,8 @@ Personal site of Daniel Etrata with a resume, projects, and blog. Built with
 | Path                    | What it is                                          |
 | ----------------------- | --------------------------------------------------- |
 | `src/pages/index.astro` | Resume (homepage)                                   |
-| `src/content/blog/`     | Blog posts, one Markdown file per post              |
-| `src/content/projects/` | Project entries, one Markdown file per project      |
+| `src/content/blog/`     | Blog posts, one Markdown file per post. Copy `_template.md` to start one. |
+| `src/content/projects/` | Project entries, one Markdown file per project. Copy `_template.md` to start one. |
 | `src/layouts/`          | Shared layout, nav, and global styles               |
 | `src/content.config.ts` | Frontmatter schemas for the content collections     |
 
@@ -22,7 +22,7 @@ npm run dev       # local dev server
 npm run build     # production build to dist/
 ```
 
-Requires Node 22+.
+Requires Node 22.12 or newer.
 
 ## Deployment
 

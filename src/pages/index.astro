@@ -97,7 +97,7 @@ const experience = [
     location: 'Chicago, IL',
     stack: null,
     bullets: [
-      'Developed the persispy tool for studying invariants of algebraic varieties, abstracted to n dimensions.',
+      'Developed the <a href="https://github.com/danetrata/persispy">persispy</a> tool for studying invariants of algebraic varieties, abstracted to n dimensions.',
       'Implemented C extensions from PHCPack for fast complex solutions, often achieving 10x speedups.',
     ],
   },
@@ -136,7 +136,7 @@ const experience = [
           {job.location}{job.stack && <> · <span class="stack">{job.stack}</span></>}
         </p>
         <ul>
-          {job.bullets.map((b) => <li>{b}</li>)}
+          {job.bullets.map((b) => <li set:html={b} />)}
         </ul>
       </article>
     ))}
