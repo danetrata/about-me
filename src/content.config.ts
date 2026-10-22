@@ -21,6 +21,7 @@ const projects = defineCollection({
     liveUrl: z.string().url().optional(),
     tech: z.array(z.string()).default([]),
     featured: z.boolean().default(false),
+    draft: z.boolean().default(false),
     order: z.number().default(0),
   }),
 });

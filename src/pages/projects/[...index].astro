@@ -2,7 +2,12 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection, render } from 'astro:content';
 
-const projects = (await getCollection('projects')).sort(
+export async function getStaticPaths() {
+  const projects = await getCollection('projects', ({ data }) => !data.draft);
+  return projects.length > 0 ? [{ params: { index: undefined } }] : [];
+}
+
+const projects = (await getCollection('projects', ({ data }) => !data.draft)).sort(
   (a, b) => a.data.order - b.data.order
 );
 
@@ -11,7 +16,7 @@ const rendered = await Promise.all(
 );
 ---
 
-<BaseLayout title="Projects - Daniel Etrata">
+<BaseLayout title="Projects | Daniel Etrata">
   <h1>Projects</h1>
   <div class="grid">
     {rendered.map(({ project, Content }) => (

@@ -9,8 +9,8 @@ interface Props {
 
 const { title, description = 'Personal site of Daniel Etrata' } = Astro.props;
 
-const hasProjects = (await getCollection('projects')).length > 0;
-const hasBlog = (await getCollection('blog')).length > 0;
+const hasProjects = (await getCollection('projects', ({ data }) => !data.draft)).length > 0;
+const hasBlog = (await getCollection('blog', ({ data }) => !data.draft)).length > 0;
 ---
 
 <!doctype html>
